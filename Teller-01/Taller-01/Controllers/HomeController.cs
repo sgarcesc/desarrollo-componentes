@@ -4,9 +4,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Teller_01.Models;
+using Taller_01.Models;
 
-namespace Teller_01.Controllers
+namespace Taller_01.Controllers
 {
     public class HomeController : Controller
     {

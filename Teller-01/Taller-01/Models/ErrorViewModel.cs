@@ -1,6 +1,6 @@
 using System;
 
-namespace Teller_01.Models
+namespace Taller_01.Models
 {
     public class ErrorViewModel
     {
