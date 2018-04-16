@@ -11,6 +11,10 @@ namespace Taller01.Models
         public Guid Id { get; set; }
         public string Name { get; set; }
         public DateTime DateCreated { get; set; }
+        public Category()
+        {
+            DateCreated = DateTime.Now;
+        }
         
     }
 }
