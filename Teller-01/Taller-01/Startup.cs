@@ -4,8 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Taller01.Models;
 
 namespace Taller_01
 {
@@ -21,6 +23,8 @@ namespace Taller_01
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var connectionString = Configuration["ConnectionStrings:DefaultConnection"];
+            services.AddDbContext<CategoryContext>(options => options.UseSqlServer(connectionString));
             services.AddMvc();
         }
 
