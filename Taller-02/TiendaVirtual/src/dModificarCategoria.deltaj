@@ -1,0 +1,28 @@
+delta dModificarCategoria {
+	modifies org.pl.eshopping.fop.AdminCategoria{
+		adds public void modificar(Integer id, String n, String d) {
+			Categoria c = new Categoria();
+			c.setId(id);
+			c.setNombre(n);
+			c.setDescripcion(d);		
+			catDAO.modificar(c);
+		}
+	}
+	
+	modifies org.pl.eshopping.dto.CategoriaDAO{
+		adds public void modificar(Categoria c){
+			try {
+				conn = Conexion.getConexion();
+				String query = "UPDATE categoria set nombre=?, descripcion=? WHERE id=?";
+				ps = conn.prepareStatement(query);
+				ps.setString(1, c.getNombre()); ps.setString(2, c.getDescripcion());
+				ps.setString(3, c.getId().toString());
+				ps.executeUpdate();
+			}
+			catch(Exception e){ e.printStackTrace(); }
+			finally{
+				try { conn.close(); } catch (Exception e) { /* ignored */ }
+			}
+		}
+	}
+}

@@ -1,0 +1,18 @@
+delta dCategoriaDAO {
+	adds{
+		package org.pl.eshopping.dto;
+		import java.sql.Connection;
+		import java.sql.PreparedStatement;
+		import java.sql.ResultSet;
+		import java.sql.Statement;
+		import org.pl.eshopping.bd.Conexion;
+		
+		public class CategoriaDAO {
+			Statement st = null;
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+			Connection conn = null;
+			Conexion conexion = null;
+		}
+	}
+}

@@ -1,0 +1,26 @@
+delta dAgregarCategoria {
+	modifies org.pl.eshopping.fop.AdminCategoria{
+		adds public void agregar(String n, String d) {
+			Categoria c = new Categoria();
+			c.setNombre(n);
+			c.setDescripcion(d);
+			catDAO.agregar(c);
+		}
+	}
+		
+	modifies org.pl.eshopping.dto.CategoriaDAO{
+		adds public void agregar(Categoria c){
+			try { 
+				conn = Conexion.getConexion();
+				String query = "INSERT INTO categoria (nombre, descripcion) values (?, ?)";
+				ps = conn.prepareStatement(query);
+				ps.setString(1, c.getNombre()); ps.setString(2, c.getDescripcion());
+				ps.executeUpdate();
+			}
+			catch(Exception e){ e.printStackTrace();}
+			finally{
+				try { conn.close(); } catch (Exception e) { /* ignored */ }
+			}
+		}
+	}
+}

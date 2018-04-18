@@ -1,0 +1,11 @@
+delta dAdminCategorias {
+	adds{
+		package org.pl.eshopping.fop;
+		import org.pl.eshopping.dto.Categoria;
+		import org.pl.eshopping.dto.CategoriaDAO;
+		public class AdminCategoria{
+		CategoriaDAO catDAO = new CategoriaDAO();
+		Categoria cat = new Categoria();
+		}
+	}
+}

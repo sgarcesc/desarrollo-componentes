@@ -1,0 +1,32 @@
+SPL TiendaVirtual {
+
+	Features = {AdminCategorias, AgregarCategoria, ModificarCategoria, EliminarCategoria, Categoria, CategoriaDAO, Conexion, ConexionAntigua, Config, ConfigAntigua}
+
+	Deltas = {dAdminCategorias, dAgregarCategoria, dModificarCategoria, dEliminarCategoria, dCategoria, dCategoriaDAO, dConexion, dConexionAntigua, dConfig, dConfigAntigua}
+
+	Constraints {
+		// Put boolean expression representation of the feature model here. 
+	}
+
+	Partitions {
+		// Put mapping between deltas and feature configurations here.
+		{dAdminCategorias} when (AdminCategorias);
+		{dAdminCategorias, dCategoriaDAO, dAgregarCategoria} when (AgregarCategoria);
+		{dAdminCategorias, dCategoriaDAO, dModificarCategoria} when (ModificarCategoria);
+		{dAdminCategorias, dCategoriaDAO, dEliminarCategoria} when
+		(EliminarCategoria);
+		{dCategoria} when (Categoria);
+		{dCategoriaDAO} when (CategoriaDAO);
+		{dConexion} when (Conexion);
+		{dConexionAntigua} when (ConexionAntigua);
+		{dConfig} when (Config);
+		{dConfigAntigua} when (ConfigAntigua);
+	}
+
+	Products {
+		// Put product definitions here. 
+		tienda_completa_v10 = {AdminCategorias, AgregarCategoria, ModificarCategoria, EliminarCategoria, Categoria, CategoriaDAO, ConexionAntigua, ConfigAntigua};
+		tienda_completa_v11 = {AdminCategorias, AgregarCategoria, ModificarCategoria, EliminarCategoria, Categoria, CategoriaDAO, Conexion, Config};
+		tienda_minima_v11 = {AgregarCategoria, ModificarCategoria, EliminarCategoria, Categoria, Conexion, Config};
+	}
+}

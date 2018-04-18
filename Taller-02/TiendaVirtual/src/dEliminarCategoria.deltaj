@@ -1,0 +1,25 @@
+delta dEliminarCategoria {
+	modifies org.pl.eshopping.fop.AdminCategoria{
+		adds public void eliminar(Integer id) {
+		Categoria c = new Categoria();
+		c.setId(id);
+		catDAO.eliminar(c);
+		}
+	}
+	
+	modifies org.pl.eshopping.dto.CategoriaDAO{
+		adds public void eliminar(Categoria c){
+			try {
+				conn = Conexion.getConexion();
+				String query = "DELETE FROM categoria WHERE id=?";
+				ps = conn.prepareStatement(query);
+				ps.setString(1, c.getId().toString());
+				ps.executeUpdate();
+			}
+			catch(Exception e){ e.printStackTrace(); }
+			finally{
+				try { conn.close(); } catch (Exception e) { /* ignored */ }
+			}
+		}
+	}
+}
