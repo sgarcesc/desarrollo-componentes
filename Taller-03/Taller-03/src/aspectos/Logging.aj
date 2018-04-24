@@ -4,17 +4,24 @@ import dominio.*;
 
 public aspect Logging {
 	
-	String mensajeObtenerCategorias = "Se ha llamado al método obtenerCategorias";
+	String mensajeObtenerCategorias = "Se ha llamado al método para obtener todas las categorias";
 	pointcut obtenerCategorias() : call(List<Categorias> *.obtenerTodas());
 	
 	before() : obtenerCategorias() {
 		System.out.println(mensajeObtenerCategorias);
 	}
 	
-	String mensajeAgregarCategoria = "Se ha llamado al método agregar categoria";
-	pointcut agregarCategoria() : call(void *.agregar(Categoria));
+	String mensajeObtenerCategoriaPorId = "Se ha llamado al método para obtener una categoria por Id";
+	pointcut obtenerCategoriaPorId() : call(Categoria *.ObtenerPorId(Integer));
 	
-	before() : agregarCategoria() {
-		System.out.println(mensajeAgregarCategoria);
+	before() : obtenerCategoriaPorId() {
+		System.out.println(mensajeObtenerCategoriaPorId);
+	}
+	
+	String mensajeEliminarCategoria = "Se ha llamado al método eliminar categoria";
+	pointcut eliminarCategoria() : call(void *.eliminar(Categoria));
+	
+	before() : eliminarCategoria() {
+		System.out.println(mensajeEliminarCategoria);
 	}
 }
