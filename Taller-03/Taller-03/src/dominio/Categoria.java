@@ -1,3 +1,5 @@
+package dominio;
+
 import java.sql.*;
 
 public class Categoria {

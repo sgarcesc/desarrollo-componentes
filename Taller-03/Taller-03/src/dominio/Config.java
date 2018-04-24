@@ -1,3 +1,4 @@
+package dominio;
 
 public class Config {
 	public static final String SERVIDOR = "127.0.0.1";
