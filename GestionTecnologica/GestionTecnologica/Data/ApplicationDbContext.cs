@@ -27,9 +27,11 @@ namespace GestionTecnologica.Data
 
         public DbSet<Sede> Sede { get; set; }
 
-        public DbSet<GestionTecnologica.Models.Departamento> Departamento { get; set; }
+        public DbSet<Departamento> Departamento { get; set; }
 
-        public DbSet<GestionTecnologica.Models.Ciudad> Ciudad { get; set; }
+        public DbSet<Ciudad> Ciudad { get; set; }
+
+        public DbSet<TipoEquipo> TipoEquipo { get; set; }
         
     }
 }
