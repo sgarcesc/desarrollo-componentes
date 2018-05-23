@@ -54,7 +54,7 @@ namespace GestionTecnologica.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nombre,Estado")] TipoEquipo tipoEquipo)
+        public async Task<IActionResult> Create([Bind("Id,Nombre,Habilitado")] TipoEquipo tipoEquipo)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace GestionTecnologica.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Estado")] TipoEquipo tipoEquipo)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Habilitado")] TipoEquipo tipoEquipo)
         {
             if (id != tipoEquipo.Id)
             {

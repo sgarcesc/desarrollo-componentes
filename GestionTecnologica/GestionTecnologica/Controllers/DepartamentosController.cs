@@ -36,7 +36,7 @@ namespace GestionTecnologica.Controllers
 
             var departamento = await _context.Departamento
                 .Include(d => d.Pais)
-                .SingleOrDefaultAsync(m => m.IdDepartameto == id);
+                .SingleOrDefaultAsync(m => m.IdDepartamento == id);
             if (departamento == null)
             {
                 return NotFound();
@@ -57,7 +57,7 @@ namespace GestionTecnologica.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdDepartameto,Nombre,IdPais")] Departamento departamento)
+        public async Task<IActionResult> Create([Bind("IdDepartamento,Nombre,IdPais")] Departamento departamento)
         {
             if (ModelState.IsValid)
             {
@@ -77,7 +77,7 @@ namespace GestionTecnologica.Controllers
                 return NotFound();
             }
 
-            var departamento = await _context.Departamento.SingleOrDefaultAsync(m => m.IdDepartameto == id);
+            var departamento = await _context.Departamento.SingleOrDefaultAsync(m => m.IdDepartamento == id);
             if (departamento == null)
             {
                 return NotFound();
@@ -91,9 +91,9 @@ namespace GestionTecnologica.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdDepartameto,Nombre,IdPais")] Departamento departamento)
+        public async Task<IActionResult> Edit(int id, [Bind("IdDepartamento,Nombre,IdPais")] Departamento departamento)
         {
-            if (id != departamento.IdDepartameto)
+            if (id != departamento.IdDepartamento)
             {
                 return NotFound();
             }
@@ -107,7 +107,7 @@ namespace GestionTecnologica.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!DepartamentoExists(departamento.IdDepartameto))
+                    if (!DepartamentoExists(departamento.IdDepartamento))
                     {
                         return NotFound();
                     }
@@ -132,7 +132,7 @@ namespace GestionTecnologica.Controllers
 
             var departamento = await _context.Departamento
                 .Include(d => d.Pais)
-                .SingleOrDefaultAsync(m => m.IdDepartameto == id);
+                .SingleOrDefaultAsync(m => m.IdDepartamento == id);
             if (departamento == null)
             {
                 return NotFound();
@@ -146,7 +146,7 @@ namespace GestionTecnologica.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var departamento = await _context.Departamento.SingleOrDefaultAsync(m => m.IdDepartameto == id);
+            var departamento = await _context.Departamento.SingleOrDefaultAsync(m => m.IdDepartamento == id);
             _context.Departamento.Remove(departamento);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
@@ -154,7 +154,7 @@ namespace GestionTecnologica.Controllers
 
         private bool DepartamentoExists(int id)
         {
-            return _context.Departamento.Any(e => e.IdDepartameto == id);
+            return _context.Departamento.Any(e => e.IdDepartamento == id);
         }
     }
 }

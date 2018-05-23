@@ -31,6 +31,34 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                    @if (User.Identity.IsAuthenticated)
+    {
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        Maestros
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dro">
+                        <li><a asp-area="" asp-controller="TipoEquipos" asp-action="Index">Tipos de equipo</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="#">Localización</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">@Html.ActionLink("Países", "Index", "Paises", new { area = "" }, null)</a></li>
+                                <li class="divider"></li>
+                                <li><a class="dropdown-item" href="#">@Html.ActionLink("Departamentos", "Index", "Departamentos", new { area = "" }, null)</a></li>
+                                <li class="divider"></li>
+                                <li><a class="dropdown-item" href="#">@Html.ActionLink("Ciudades", "Index", "Ciudades", new { area = "" }, null)</a></li>
+                                <li class="divider"></li>
+                                <li><a class="dropdown-item" href="#">@Html.ActionLink("Sedes", "Index", "Sedes", new { area = "" }, null)</a></li>
+                                <li class="divider"></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><a asp-area="" asp-controller="Equipos" asp-action="Index">Equipos</a></li>
+                <li><a asp-area="" asp-controller="Equipos" asp-action="Informe">Informe</a></li>
+}
                 </ul>
                 @await Html.PartialAsync("_LoginPartial")
             </div>
@@ -63,6 +91,8 @@
                 integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
         </script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
+        <script src="~/js/site.js"></script>
+        <link href="~/css/site.css" rel="stylesheet" />
     </environment>
 
     @RenderSection("Scripts", required: false)

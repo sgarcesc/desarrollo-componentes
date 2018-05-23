@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace GestionTecnologica.Models
 {
@@ -10,5 +11,7 @@ namespace GestionTecnologica.Models
         public string Nombre { get; set; }
 
         public bool Habilitado { get; set; }
+
+        public virtual ICollection<Equipo> Equipos { get; set; }
     }
 }

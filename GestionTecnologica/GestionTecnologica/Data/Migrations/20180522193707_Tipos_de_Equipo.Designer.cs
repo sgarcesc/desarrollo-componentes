@@ -11,9 +11,10 @@ using System;
 namespace GestionTecnologica.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180522193707_Tipos_de_Equipo")]
+    partial class Tipos_de_Equipo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -106,35 +107,6 @@ namespace GestionTecnologica.Data.Migrations
                     b.HasIndex("IdPais");
 
                     b.ToTable("Departamento");
-                });
-
-            modelBuilder.Entity("GestionTecnologica.Models.Equipo", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<DateTime>("FechaCompra");
-
-                    b.Property<DateTime>("FechaExpiracionGarantia");
-
-                    b.Property<int>("IdSede");
-
-                    b.Property<int>("IdTipoEquipo");
-
-                    b.Property<string>("NumeroSerie")
-                        .IsRequired();
-
-                    b.Property<int?>("SedeId");
-
-                    b.Property<int?>("TipoEquipoId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("SedeId");
-
-                    b.HasIndex("TipoEquipoId");
-
-                    b.ToTable("Equipo");
                 });
 
             modelBuilder.Entity("GestionTecnologica.Models.Pais", b =>
@@ -309,17 +281,6 @@ namespace GestionTecnologica.Data.Migrations
                         .WithMany("Departamentos")
                         .HasForeignKey("IdPais")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("GestionTecnologica.Models.Equipo", b =>
-                {
-                    b.HasOne("GestionTecnologica.Models.Sede", "Sede")
-                        .WithMany()
-                        .HasForeignKey("SedeId");
-
-                    b.HasOne("GestionTecnologica.Models.TipoEquipo", "TipoEquipo")
-                        .WithMany()
-                        .HasForeignKey("TipoEquipoId");
                 });
 
             modelBuilder.Entity("GestionTecnologica.Models.Sede", b =>

@@ -14,14 +14,25 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="IdCiudad" />
             <div class="form-group">
-                <label asp-for="Nombre" class="control-label"></label>
-                <input asp-for="Nombre" class="form-control" />
-                <span asp-validation-for="Nombre" class="text-danger"></span>
+                <label asp-for="IdPais" class="control-label"></label>
+                <select asp-for="IdPais" class="form-control" asp-items="ViewBag.IdPais">
+                    <option>
+                        Seleccionar
+                    </option>
+                </select>
             </div>
             <div class="form-group">
                 <label asp-for="IdDepartamento" class="control-label"></label>
-                <input asp-for="IdDepartamento" class="form-control" />
-                <span asp-validation-for="IdDepartamento" class="text-danger"></span>
+                <select asp-for="IdDepartamento" class="form-control" asp-items="ViewBag.IdDepartamento">
+                    <option>
+                        Seleccionar
+                    </option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-default" />
